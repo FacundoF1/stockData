@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class StockData implements OnInit {
 
-  public data$: Observable<[data]>;
+  public data$: Observable<[data]|[]>;
   public error$: Observable<string>;
   public onSearch: FormGroup;
 
@@ -31,10 +31,7 @@ export class StockData implements OnInit {
 
   public onSubmit() {
     this._stockDataService.getStockData( this.inputValue.value ).subscribe(
-      (result:any) => { 
-        if(result.data.length>0)this.data$ = of( result.data );
-        else { this.error$ = of( 'No Results Found' ); }  
-      },
+      (result:any) => {  this.data$ = of( result.data ); },
       (error) => {  },
     );
   }

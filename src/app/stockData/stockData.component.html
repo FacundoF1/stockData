@@ -14,6 +14,6 @@
     <li class="py-10">Open: {{ item.open }}</li>
   </ul>
 
-  <div *ngIf="(error$|async) && !(data$|async)" class="mt-50 slide-up-fade-in"
+  <div *ngIf="(data$|async)&&(data$|async).length==0" class="mt-50 slide-up-fade-in"
     id="no-result" data-test-id="no-result">No Results Found</div>
 </div>
